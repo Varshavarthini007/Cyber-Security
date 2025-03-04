@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Checker</title>
+    <style>
+        body {
+            background-color: purple;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+        }
+        h1 {
+            font-style: italic;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px;
+            width: 250px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: white;
+            color: purple;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        .valid {
+            color: green;
+        }
+        .invalid {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Password Strength Checker</h1>
+
+    <div class="container">
+        <input type="password" id="password" placeholder="Enter your password">
+        <button onclick="checkPassword()">Check Password</button>
+        <div id="message" class="message"></div>
+    </div>
+
+    <script>
+        function checkPassword() {
+            var password = document.getElementById('password').value;
+            var message = document.getElementById('message');
+            
+            // Regular expressions for password criteria
+            var strongPassword = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+            if (strongPassword.test(password)) {
+                message.textContent = "Password is strong!";
+                message.className = "message valid";
+            } else {
+                message.textContent = "Password is weak. It should contain at least 8 characters, one letter, one number, and one special character.";
+                message.className = "message invalid";
+            }
+        }
+    </script>
+
+</body>
+</html>
